@@ -1,10 +1,19 @@
 import React from 'react';
 import styles from './index.less';
-console.log(process.env)
+import { Layout } from 'antd';
+import 'antd/dist/antd.css';
+
+const { Header, Footer, Sider, Content } = Layout;
+
+console.log(process.env);
 export default () => {
   return (
     <div>
-      <h1 className={styles.title}>Page index</h1>
+      <Layout>
+        <Header>Header</Header>
+        <Content>index</Content>
+        <Footer>Footer</Footer>
+      </Layout>
     </div>
   );
-}
+};

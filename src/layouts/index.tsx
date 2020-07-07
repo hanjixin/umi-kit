@@ -1,30 +1,35 @@
 import React from 'react';
 import { Link } from 'umi';
+import { Layout } from 'antd';
+// import 'antd/dist/antd.css';
 
-function Layout(props: any) {
+const { Header, Footer, Sider, Content } = Layout;
+
+function LayoutContainer(props: any) {
   console.log(props);
   return (
-    <div>
-      <div>
-        <header>
-          <ul style={{ display: 'flex', justifyContent: 'space-around' }}>
-            <li>
-              <Link to="/">首页</Link>
-            </li>
-            <li>
-              <Link to="/about">about</Link>
-            </li>
-            <li>
-              <Link to="/404">404</Link>
-            </li>
-            <li>test</li>
-            <li>aa</li>
-          </ul>
-        </header>
-      </div>
-      {props.children}
-      <div>footer</div>
-    </div>
+    <Layout>
+      <Header>
+        <ul style={{ display: 'flex', justifyContent: 'space-around' }}>
+          <li>
+            <Link to="/">首页</Link>
+          </li>
+          <li>
+            <Link to="/about">about</Link>
+          </li>
+          <li>
+            <Link to="/404">404</Link>
+          </li>
+          <li>
+            <Link to="/test">test</Link>
+          </li>
+          <li>aa</li>
+        </ul>
+      </Header>
+      <Content>{props.children}</Content>
+      <Footer>Footer</Footer>
+    </Layout>
   );
 }
-export default Layout;
+
+export default LayoutContainer;
