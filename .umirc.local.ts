@@ -14,5 +14,5 @@ export default defineConfig({
     { path: '/404', component: '@/pages/404' },
   ],
   ssr: {},
-  exportStatic: {},
+  //   exportStatic: {},
 });

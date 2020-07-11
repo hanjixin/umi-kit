@@ -1,5 +1,9 @@
 import React from 'react';
 import { Table, Tag, Space } from 'antd';
+import { IGetInitialProps } from 'umi';
+
+import axios from 'axios';
+import fetch from 'dva/fetch';
 
 const columns = [
   {
@@ -74,7 +78,37 @@ const data = [
   },
 ];
 
-function NotFound() {
-  return <Table columns={columns} dataSource={data} />;
+function NotFound(props: any) {
+  console.log(props, 'test');
+  return (
+    <div>
+      <h1>请求数据{props.data && props.data.name}</h1>
+      <Table columns={columns} dataSource={data} />
+    </div>
+  );
 }
+
+// IGetInitialProps
+NotFound.getInitialProps = (async ctx => {
+  console.log(ctx);
+  ctx.isServer = false;
+  return new Promise(resolve => {
+    axios.get('http://127.0.0.1:3000/users/hello?name=hanjxin').then(res => {
+      console.log(res.headers);
+      console.log(res);
+      debugger;
+      resolve({
+        data: res.data,
+      });
+    });
+  });
+  return Promise.resolve({
+    data: {
+      title: 'Hello World',
+      name: '123',
+    },
+  });
+}) as IGetInitialProps;
+
+//   NotFound.getInitialProps.isServer = true
 export default NotFound;

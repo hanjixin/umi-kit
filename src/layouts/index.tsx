@@ -6,7 +6,7 @@ import { Layout } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 
 function LayoutContainer(props: any) {
-  console.log(props);
+  //   console.log(props);
   return (
     <Layout>
       <Header>
@@ -23,7 +23,9 @@ function LayoutContainer(props: any) {
           <li>
             <Link to="/test">test</Link>
           </li>
-          <li>aa</li>
+          <li>
+            <Link to="/hello">hello</Link>
+          </li>
         </ul>
       </Header>
       <Content>{props.children}</Content>
